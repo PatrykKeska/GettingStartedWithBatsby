@@ -1,7 +1,8 @@
 import React from "react"
-import {graphql} from 'gatsby' ;
+import { graphql } from 'gatsby';
 import ArticlePreview from "../components/ArticlePreview/ArticlePreview";
 import styled from 'styled-components'
+const slugify = require('slugify')
 
 
 const ArticlesWrapper = styled.div`
@@ -20,58 +21,40 @@ const ArticlesWrapper = styled.div`
   }
 `;
 
-const AriclesPage = ({data}) => { 
-  return ( 
-    <ArticlesWrapper>
-  {data.allMdx.nodes.map(item => <ArticlePreview key={item.frontmatter.title} title={item.frontmatter.title} author={item.frontmatter.author} background={item.frontmatter.Fimage.childImageSharp.fluid}>
+const AriclesPage = ({ data }) => {
 
-  </ArticlePreview>)}
+  return (
+    <ArticlesWrapper>
+      {data.allDatoCmsArticle.nodes.map(item => <ArticlePreview author={item.author} slug={slugify(item.title, { lower: true })} key={item.id} title={item.title} background={item.fimage.fluid}>
+
+      </ArticlePreview>)}
 
     </ArticlesWrapper>
   )
 }
 
 
+
 export const query = graphql`
-{
-  allMdx{
-    nodes{
-      frontmatter{
+  {
+    allDatoCmsArticle{
+      nodes {
+        id
         title
-        slug
         author
-        Fimage {
-          childImageSharp{
-            fluid(maxWidth:600 maxHeight:400 quality:90){
-            ...GatsbyImageSharpFluid_noBase64 
-      ...GatsbyImageSharpFluid_tracedSVG
-            }
+        fimage {
+          fluid(maxWidth: 600) {
+            ...GatsbyDatoCmsFluid_tracedSVG
           }
         }
+       
       }
     }
   }
-}`
+`;
 
 
-// {
-//   allMdx{
-//     nodes{
-//       frontmatter{
-//         title
-//         slug
-//         author
-//         Fimage {
-//           childImageSharp{
-//             fluid(maxWidth:600 maxHeight:400){
-//               src
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }`
+
+
 
 export default AriclesPage
- 

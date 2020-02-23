@@ -1,13 +1,14 @@
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 import React from 'react';
-import Image from 'gatsby-image'; 
+import Image from 'gatsby-image';
+import { Link } from 'gatsby';
 
-
-const ArticleWrapper = styled.div ` 
+const ArticleWrapper = styled(Link)`
+display : block;  
 position : relative; 
 width :80%; 
 height : 400px; 
-background-image: url(${({background})=> background}); 
+background-image: url(${({ background }) => background}); 
 background-size : cover ; 
 background-position : center; 
 background-repeat: no-repeat; 
@@ -52,14 +53,14 @@ object-fit : fit;
 // </ArticleWrapper>
 // )
 
-const ArticlePreview = ({title, background , author})=> ( 
-<ArticleWrapper>
-<StyledImg fluid={background}/>
-<ArticleDetails>
-<h2>{title}</h2>
-<p>{author}</p>
-     </ArticleDetails>
-</ArticleWrapper>
+const ArticlePreview = ({ title, author, slug, background }) => (
+     <ArticleWrapper to={`articles/${slug}`}>
+          <StyledImg fluid={background} />
+          <ArticleDetails>
+               <h2>{title}</h2>
+               <p>{author}</p>
+          </ArticleDetails>
+     </ArticleWrapper>
 )
 
 
