@@ -32,11 +32,13 @@ align-items : flex-start;
 flex-direction : column;
 
 h2{ 
-     margin : 10px; 
+     margin : 5px; 
+     font-size: 1.1em;
 }
 
 p{ 
-     margin : 10px; 
+     margin : 5px; 
+     font-size: .6em;
 }
 `
 
