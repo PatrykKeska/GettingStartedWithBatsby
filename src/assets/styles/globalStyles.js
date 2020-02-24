@@ -1,9 +1,10 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
+    font-size: calc(1vw + 1em); 
   }
   *,
   *::before,
@@ -11,9 +12,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    margin: 0;
-    padding: 80px 65px 0;
+    margin: 0 auto;
+padding : 50px 15px 15px 15px;
     font-family: 'Montserrat';
+    overflow-x: hidden;
+    
+    
   }
   button {
     padding: 0;

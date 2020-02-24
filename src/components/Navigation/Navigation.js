@@ -1,6 +1,6 @@
-import React from 'react'; 
+import React from 'react';
 import styled from 'styled-components'
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 
 const NavigationWrapper = styled.nav`
 display: flex ; 
@@ -16,11 +16,11 @@ a{
     color : inherit; 
 }
 `
-;
+    ;
 const Logo = styled.span`
 font-size: 20px;
 font-weight : 700;  
-margin-right : 10px;
+margin-right : 2px;
 
 
 `
@@ -30,19 +30,19 @@ const NavigaitonList = styled.ul`
 list-style : none ; 
 display : flex; 
 
-` 
+`
 
 
-const NavigaitonListItem = styled.li `
+const NavigaitonListItem = styled.li`
 font-weight : 600; 
 font-size : 15px; 
-margin-left : 32px; 
+margin-left : 10px; 
 
 `
 
 
 
-const Navigation = ()=> ( 
+const Navigation = () => (
     <NavigationWrapper>
         <Logo><Link to='/'>HATTA</Link></Logo>
         <NavigaitonList>
@@ -50,7 +50,7 @@ const Navigation = ()=> (
             <NavigaitonListItem><Link to="/about">about</Link></NavigaitonListItem>
             <NavigaitonListItem><Link to="/gallery">gallery</Link></NavigaitonListItem>
             <NavigaitonListItem><Link to="/contact">contact</Link></NavigaitonListItem>
-             </NavigaitonList>
+        </NavigaitonList>
     </NavigationWrapper>
 )
 

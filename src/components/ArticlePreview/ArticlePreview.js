@@ -4,9 +4,11 @@ import Image from 'gatsby-image';
 import { Link } from 'gatsby';
 
 const ArticleWrapper = styled(Link)`
-display : block;  
+display : flex;
+justify-content: center; 
+align-items: center;  
 position : relative; 
-width :80%; 
+width :100%; 
 height : 400px; 
 background-image: url(${({ background }) => background}); 
 background-size : cover ; 
