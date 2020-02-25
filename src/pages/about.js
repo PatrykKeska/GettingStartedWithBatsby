@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components'
 
 export const query = graphql`
-query MyQuery {
+query aboutQuery {
   allDatoCmsAbout {
     nodes {
       heading
