@@ -93,11 +93,9 @@ const GalleryPage = ({ data }) => {
             <h1>{item.heading}</h1>
             <p>{item.paragraph}</p>
             <GridWrapper className="MyComponent">
-
               {item.modular.map(item => item.photos.map(({ fluid, path }) => <a href={fluid.src}>
                 <StyledImage key={fluid.src} fluid={fluid} />
               </a>))}
-
             </GridWrapper>
           </StyledWrapper>
         )
