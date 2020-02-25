@@ -7,7 +7,9 @@ import Image from 'gatsby-image'
 
 const ContentWrapper = styled.div`
 width : 100%; 
-height: 100%; 
+height: 100%;
+max-height: 100vh; 
+overflow: hidden; 
 display: grid;  
 padding : 10px 10px 50px 10px; 
 grid-template-columns : 1fr 1.5fr; 

@@ -3,6 +3,9 @@ import { graphql } from 'gatsby';
 import Image from 'gatsby-image'
 import styled from 'styled-components'
 
+
+
+
 export const query = graphql`
 query galleryCms {
   allDatoCmsGallery {
@@ -12,10 +15,11 @@ query galleryCms {
       id
       modular {
       photos{
-        fluid(maxWidth:300 maxHeight:400){
+        fluid{
           src
           ...GatsbyDatoCmsFluid_tracedSVG
         }
+        path
       }
       }
     }
@@ -25,6 +29,20 @@ query galleryCms {
 const StyledWrapper = styled.article`
 width : 100%; 
 height: 100%;
+
+p{ 
+  width: 80%;
+
+  @media(min-width:640px){ 
+    width : 60%;
+  }
+
+
+  @media(min-width:1001px){ 
+    width : 30%;
+  }
+
+}
 `
 
 const GridWrapper = styled.div`
@@ -48,6 +66,19 @@ const GridWrapper = styled.div`
 
  `
 
+const StyledImage = styled(Image)`
+will-change: transform; 
+transition : .2s linear; 
+border-radius: 15px;
+box-shadow: 0 0 5px 2px black; 
+ :hover{ 
+   transform : scale(.9); 
+
+ }
+ `
+
+
+
 const GalleryPage = ({ data }) => {
   const { nodes } = data.allDatoCmsGallery;
 
@@ -57,12 +88,16 @@ const GalleryPage = ({ data }) => {
     <>
       {nodes.map(item => {
         return (
+
           <StyledWrapper key={item.id}>
             <h1>{item.heading}</h1>
             <p>{item.paragraph}</p>
-            <GridWrapper>
+            <GridWrapper className="MyComponent">
 
-              {item.modular.map(item => item.photos.map(({ fluid }) => <Image key={fluid.src} fluid={fluid} />))}
+              {item.modular.map(item => item.photos.map(({ fluid, path }) => <a href={fluid.src}>
+                <StyledImage key={fluid.src} fluid={fluid} />
+              </a>))}
+
             </GridWrapper>
           </StyledWrapper>
         )

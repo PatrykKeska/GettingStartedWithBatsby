@@ -14,6 +14,12 @@ background-image: url(${({ background }) => background});
 background-size : cover ; 
 background-position : center; 
 background-repeat: no-repeat; 
+will-change: transform; 
+transition : .2s linear; 
+ :hover{ 
+   transform : scale(.9); 
+ }
+
 
 
 `
@@ -46,6 +52,7 @@ const StyledImg = styled(Image)`
 width: 100%; 
 height : 100%; 
 object-fit : fit; 
+border-radius: 15px;
 `
 
 // const ArticlePreview = ({title, background , author})=> ( 
