@@ -29,18 +29,23 @@ query querySingleArticle($id: String!) {
 
 
 const StyledImg = styled(Image)`
-width : 50%; 
-height : 50% ;
-object-fit: fit; 
+width : 80%; 
+height : 80% ;
+object-fit: fit;
+
+@media(min-width:1000px){
+  width : 50%; 
+  height: 50%; 
+}
 `
 
 const PostLayout = ({ data }) => {
-
   return (
     <div>
       <h1>{data.datoCmsArticle.title}</h1>
       <p>{data.datoCmsArticle.author}</p>
       <StyledImg fluid={data.datoCmsArticle.fimage.fluid} />
+      <p>{data.datoCmsArticle.articleContent.map(({ paragraphContent }) => paragraphContent)}</p>
 
     </div>
   )

@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from 'gatsby';
 import styled from 'styled-components'
+import Img from 'gatsby-image';
 
 export const query = graphql`
 query aboutQuery {
@@ -12,8 +13,8 @@ query aboutQuery {
       id
       backgroundimage {
         fluid{
-          ...GatsbyDatoCmsFluid_tracedSVG
-          src
+        src
+        ...GatsbyDatoCmsFluid_tracedSVG
         }
       }
     }
@@ -59,16 +60,12 @@ grid-gap: 5px;
 
 
 `
-const StyledImg = styled.div`
+const StyledImg = styled(Img)`
 width : 100%; 
 height :100%;
 grid-row: 3/3;
 place-self: center; 
 border-radius: 20px;
-background-image:url(${({ background }) => background});
-background-repeat: no-repeat; 
-background-size: cover; 
-background-position: center; 
 max-width: 400px;
 
 @media(min-width:1000px){ 
@@ -127,18 +124,17 @@ grid-row : 4/4;
 
 }
 `
-const AboutPage = ({ data }) => {
 
+const AboutPage = ({ data }) => {
   return (
     <>
       {data.allDatoCmsAbout.nodes.map(item =>
-
         <StyledWrapper key={item.id}>
           <StyledInnerWrapper>
             <StyledTitle>{item.heading}</StyledTitle>
             <StyledParagraph>{item.paragraph}</StyledParagraph>
             <StyledDescription>{item.description}</StyledDescription>
-            <StyledImg background={item.backgroundimage.fluid.src} />
+            <StyledImg fluid={item.backgroundimage.fluid} />
           </StyledInnerWrapper>
         </StyledWrapper>
       )}
